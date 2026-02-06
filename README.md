@@ -28,6 +28,11 @@ pip install -r requirements.txt
 python app.py
 ```
 
+Or with debug mode enabled:
+```bash
+FLASK_DEBUG=true python app.py
+```
+
 3. Open your browser and navigate to:
 - Homepage: http://localhost:5000
 - Health check: http://localhost:5000/health
@@ -50,15 +55,16 @@ Then access the application at http://localhost:5000
 
 ### Docker Compose (Optional)
 
-Create a `docker-compose.yml` file:
+Create a `docker-compose.yml` file (version field optional for modern Docker Compose):
 
 ```yaml
-version: '3.8'
 services:
   web:
     build: .
     ports:
       - "5000:5000"
+    environment:
+      - FLASK_DEBUG=false
 ```
 
 Then run:
